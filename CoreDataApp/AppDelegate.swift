@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let companiesController = ViewController()
+        let companiesController = CompaniesController()
         
         // navController should be subclass of the customer Navigation Controller
         let navController = CustomNavigationController(rootViewController: companiesController)

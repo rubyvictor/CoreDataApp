@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		B17C32EA1FA8A32500F524F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32E91FA8A32500F524F3 /* AppDelegate.swift */; };
-		B17C32EC1FA8A32500F524F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32EB1FA8A32500F524F3 /* ViewController.swift */; };
+		B17C32EC1FA8A32500F524F3 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */; };
 		B17C32EF1FA8A32500F524F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17C32ED1FA8A32500F524F3 /* Main.storyboard */; };
 		B17C32F11FA8A32500F524F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17C32F01FA8A32500F524F3 /* Assets.xcassets */; };
 		B17C32F41FA8A32500F524F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17C32F21FA8A32500F524F3 /* LaunchScreen.storyboard */; };
+		B17C32FC1FA8C24F00F524F3 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32FB1FA8C24F00F524F3 /* Company.swift */; };
+		B17C32FE1FA8CAC700F524F3 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B17C32E61FA8A32500F524F3 /* CoreDataApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17C32E91FA8A32500F524F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B17C32EB1FA8A32500F524F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesController.swift; sourceTree = "<group>"; };
 		B17C32EE1FA8A32500F524F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B17C32F01FA8A32500F524F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B17C32F31FA8A32500F524F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B17C32F51FA8A32500F524F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B17C32FB1FA8C24F00F524F3 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				B17C32E91FA8A32500F524F3 /* AppDelegate.swift */,
-				B17C32EB1FA8A32500F524F3 /* ViewController.swift */,
+				B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */,
 				B17C32ED1FA8A32500F524F3 /* Main.storyboard */,
 				B17C32F01FA8A32500F524F3 /* Assets.xcassets */,
 				B17C32F21FA8A32500F524F3 /* LaunchScreen.storyboard */,
 				B17C32F51FA8A32500F524F3 /* Info.plist */,
+				B17C32FB1FA8C24F00F524F3 /* Company.swift */,
+				B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */,
 			);
 			path = CoreDataApp;
 			sourceTree = "<group>";
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B17C32EC1FA8A32500F524F3 /* ViewController.swift in Sources */,
+				B17C32EC1FA8A32500F524F3 /* CompaniesController.swift in Sources */,
 				B17C32EA1FA8A32500F524F3 /* AppDelegate.swift in Sources */,
+				B17C32FC1FA8C24F00F524F3 /* Company.swift in Sources */,
+				B17C32FE1FA8CAC700F524F3 /* CreateCompanyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
