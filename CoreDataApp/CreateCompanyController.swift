@@ -15,22 +15,21 @@ class CreateCompanyController: UIViewController {
         
         view.backgroundColor = .darkBlue
         
-        setupNavigationStyle()
+        navigationItem.title = "Create Company"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+//        setupNavigationStyle() // not needed after refactor
+    }
+    @objc func handleCancel(){
+        dismiss(animated: true, completion: nil)
+        print("Cancelled create company")
     }
     
+    
 }
+// Can delete this extension after refactoring into appearance() proxy
+//extension UIViewController {
+//    func setupNavigationStyle(){
+//
+//    }
+//}
 
-extension UIViewController {
-    func setupNavigationStyle(){
-        navigationController?.navigationBar.isTranslucent = false
-        
-        let lightRed = UIColor.rgb(r: 247, g: 66, b: 82)
-        navigationController?.navigationBar.barTintColor = lightRed
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        //titleTextAttributes for small title at top of navbar
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
-        //LargeTitleTextAttributes for large title when static
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
-    }
-}

@@ -60,12 +60,12 @@
 			children = (
 				B17C32E91FA8A32500F524F3 /* AppDelegate.swift */,
 				B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */,
+				B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */,
 				B17C32ED1FA8A32500F524F3 /* Main.storyboard */,
 				B17C32F01FA8A32500F524F3 /* Assets.xcassets */,
 				B17C32F21FA8A32500F524F3 /* LaunchScreen.storyboard */,
 				B17C32F51FA8A32500F524F3 /* Info.plist */,
 				B17C32FB1FA8C24F00F524F3 /* Company.swift */,
-				B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */,
 			);
 			path = CoreDataApp;
 			sourceTree = "<group>";

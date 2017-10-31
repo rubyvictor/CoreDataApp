@@ -23,6 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Refactor setupNavigationStyle() methods using Appearance() Proxy
+        
+        UINavigationBar.appearance().tintColor = .white // For white bar cancel text
+        UINavigationBar.appearance().isTranslucent = false
+        
+        let lightRed = UIColor.rgb(r: 247, g: 66, b: 82)
+        UINavigationBar.appearance().barTintColor = lightRed
+        
+        UINavigationBar.appearance().prefersLargeTitles = true
+        //titleTextAttributes for small title at top of navbar
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        //LargeTitleTextAttributes for large title when static
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
         

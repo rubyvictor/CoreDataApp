@@ -15,7 +15,7 @@ class CompaniesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationStyle() // Access nav style via extension
+//        setupNavigationStyle() // Not needed after refactor via appearance() proxy
 
         companies.append(Company(name: "ABC wow!", founded: Date()))
         companies.append(Company(name: "Apple inc", founded: Date()))
@@ -43,8 +43,9 @@ class CompaniesController: UITableViewController {
         print("adding company")
         //Present CreateCompanyController using Modal style.i.e. from bottom up
         let createCompanyController = CreateCompanyController()
-//        createCompanyController.view.backgroundColor = .purple
-        let navController = UINavigationController(rootViewController: createCompanyController)
+        
+        //Subclass CustomNavigationController for statusBarStyle
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
         present(navController, animated: true, completion: nil)
     }
     
