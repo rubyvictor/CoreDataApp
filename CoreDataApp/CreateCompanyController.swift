@@ -10,6 +10,8 @@ import UIKit
 
 class CreateCompanyController: UIViewController {
     
+    var companiesController = CompaniesController()
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name1"
@@ -32,13 +34,30 @@ class CreateCompanyController: UIViewController {
         
         view.backgroundColor = .darkBlue
         
-        navigationItem.title = "Create Company"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        setupNavItems()
+        
+        
 //        setupNavigationStyle() // not needed after refactor
     }
     @objc func handleCancel(){
         dismiss(animated: true, completion: nil)
         print("Cancelled create company")
+    }
+    @objc func handleSave(){
+        print("Save company")
+        dismiss(animated: true, completion: nil)
+        
+        guard let name = nameTextField.text else { return }
+        
+        let company = Company(name: name, founded: Date())
+        companiesController.addCompany(company: company)
+    }
+    
+    func setupNavItems(){
+        navigationItem.title = "Create Company"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
     
     func setupUI(){

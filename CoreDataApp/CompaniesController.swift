@@ -9,11 +9,16 @@
 import UIKit
 
 class CompaniesController: UITableViewController {
+    
+    
 
     var companies = [Company?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //test add:
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "test+", style: .plain, target: self, action: #selector(addCompany))
         
 //        setupNavigationStyle() // Not needed after refactor via appearance() proxy
 
@@ -39,6 +44,22 @@ class CompaniesController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
 
+    // To pass data from createCompanyController to CompaniesController
+    // 3 steps
+    // Step 1: create reference in createCompanyController to CompaniesController()
+    // Step 2: Inside HandleAddCompany, set that reference to self
+    // Step 3: Modify AddCompany to take in param company
+    func addCompany(company: Company){
+//        let honda = Company(name: "Honda inc", founded: Date())
+
+        //1: modify array
+        companies.append(company)
+        
+        //2: insert a new indexPath into Company array
+        let newIndexPath = IndexPath(row: companies.count-1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
     @objc func handleAddCompany(){
         print("adding company")
         //Present CreateCompanyController using Modal style.i.e. from bottom up
@@ -46,6 +67,7 @@ class CompaniesController: UITableViewController {
         
         //Subclass CustomNavigationController for statusBarStyle
         let navController = CustomNavigationController(rootViewController: createCompanyController)
+        createCompanyController.companiesController = self
         present(navController, animated: true, completion: nil)
     }
     
