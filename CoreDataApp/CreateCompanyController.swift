@@ -8,9 +8,16 @@
 
 import UIKit
 
+//Custom Delegation
+// Benefit: This class is Not tightly coupled with CompaniesController class.
+protocol CreateCompanyControllerDelegate {
+    func didAddCompany(company: Company)
+}
+
 class CreateCompanyController: UIViewController {
     
-    var companiesController = CompaniesController()
+//    var companiesController = CompaniesController() //refactor to delegate
+    var delegate: CreateCompanyControllerDelegate?
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -51,7 +58,10 @@ class CreateCompanyController: UIViewController {
             guard let name = self.nameTextField.text else { return }
             
             let company = Company(name: name, founded: Date())
-            self.companiesController.addCompany(company: company)
+//            self.companiesController.addCompany(company: company)
+            //refactor to delegate
+            //No need for AddCompany(company: Company) method anymore
+            self.delegate?.didAddCompany(company: company)
         }
     }
     

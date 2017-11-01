@@ -8,9 +8,16 @@
 
 import UIKit
 
-class CompaniesController: UITableViewController {
+class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
     
-    
+    func didAddCompany(company: Company) {
+        // Code from original addCompany(company: Company) method goes here after refactor
+        companies.append(company)
+        
+        //2: insert a new indexPath into Company array
+        let newIndexPath = IndexPath(row: companies.count-1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
 
     var companies = [Company?]()
     
@@ -49,16 +56,18 @@ class CompaniesController: UITableViewController {
     // Step 1: create reference in createCompanyController to CompaniesController()
     // Step 2: Inside HandleAddCompany, set that reference to self
     // Step 3: Modify AddCompany to take in param company
-    func addCompany(company: Company){
-//        let honda = Company(name: "Honda inc", founded: Date())
+    // Steps 1-3 above and this addCompany method is no longer needed after implementing custom Delegation
 
-        //1: modify array
-        companies.append(company)
-        
-        //2: insert a new indexPath into Company array
-        let newIndexPath = IndexPath(row: companies.count-1, section: 0)
-        tableView.insertRows(at: [newIndexPath], with: .automatic)
-    }
+//    func addCompany(company: Company){
+////        let honda = Company(name: "Honda inc", founded: Date())
+//
+//        //1: modify array
+//        companies.append(company)
+//
+//        //2: insert a new indexPath into Company array
+//        let newIndexPath = IndexPath(row: companies.count-1, section: 0)
+//        tableView.insertRows(at: [newIndexPath], with: .automatic)
+//    }
     
     @objc func handleAddCompany(){
         print("adding company")
@@ -67,7 +76,8 @@ class CompaniesController: UITableViewController {
         
         //Subclass CustomNavigationController for statusBarStyle
         let navController = CustomNavigationController(rootViewController: createCompanyController)
-        createCompanyController.companiesController = self
+//        createCompanyController.companiesController = self
+        createCompanyController.delegate = self // This class MUST conform to protocol and implement the method didAddCompany()
         present(navController, animated: true, completion: nil)
     }
     
