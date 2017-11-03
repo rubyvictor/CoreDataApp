@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
     
@@ -29,15 +30,17 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
 //        setupNavigationStyle() // Not needed after refactor via appearance() proxy
 
-        companies.append(Company(name: "ABC wow!", founded: Date()))
-        companies.append(Company(name: "Apple inc", founded: Date()))
-        companies.append(Company(name: "Wow inc", founded: Date()))
-        companies.append(Company(name: "Amazing inc", founded: Date()))
+//        companies.append(Company(name: "ABC wow!", founded: Date()))
+//        companies.append(Company(name: "Apple inc", founded: Date()))
+//        companies.append(Company(name: "Wow inc", founded: Date()))
+//        companies.append(Company(name: "Amazing inc", founded: Date()))
+//
+//        for company in companies {
+//            guard let name = company?.name else { return }
+//            print(name)
+//        }
         
-        for company in companies {
-            guard let name = company?.name else { return }
-            print(name)
-        }
+        fetchCompanies()
         
         navigationItem.title = "Companies"
         
@@ -50,6 +53,31 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
+    
+    private func fetchCompanies(){
+        // Initialize CoreData for NSFetchRequest(entityName: String)
+        let persistentContainer = NSPersistentContainer(name: "TrainingModel")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Loading of store failed: \(error)")
+            }
+            
+            let context = persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+            
+            do {
+                let companies = try context.fetch(fetchRequest)
+                for company in companies {
+                    print(company.name ?? "")
+                }
+            } catch let fetchError {
+                print("Failed to fetch companies:", fetchError)
+            }
+        }
+    }
+    
+    
 
     // To pass data from createCompanyController to CompaniesController
     // 3 steps
