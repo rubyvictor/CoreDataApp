@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 // Create custom Navigation Controller class to render the top status bar style to show light content
 class CustomNavigationController: UINavigationController {

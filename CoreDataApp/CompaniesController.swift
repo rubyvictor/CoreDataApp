@@ -56,7 +56,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     
     private func fetchCompanies(){
         // Initialize CoreData for NSFetchRequest(entityName: String)
-        let persistentContainer = NSPersistentContainer(name: "TrainingModel")
+        let persistentContainer = NSPersistentContainer(name: "Company")
         persistentContainer.loadPersistentStores { (storeDescription, error) in
             if let error = error {
                 fatalError("Loading of store failed: \(error)")
@@ -68,6 +68,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             
             do {
                 let companies = try context.fetch(fetchRequest)
+                
                 for company in companies {
                     print(company.name ?? "")
                 }

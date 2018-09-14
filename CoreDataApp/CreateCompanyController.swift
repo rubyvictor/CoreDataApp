@@ -55,7 +55,7 @@ class CreateCompanyController: UIViewController {
         print("Save company")
         
         // Initialize our Core Data Stack and context
-        let persistentContainer = NSPersistentContainer(name: "TrainingModel")
+        let persistentContainer = NSPersistentContainer(name: "Company")
         persistentContainer.loadPersistentStores { (storeDescription, error) in
             if let error = error {
                 fatalError("Loading of store failed: \(error)")
@@ -69,6 +69,7 @@ class CreateCompanyController: UIViewController {
             // Perform the save
             do {
                 try context.save()
+                print("Successfully saved Company:\(company)")
             } catch let saveError {
                 print("Failed to save Company: \(saveError)")
             }
