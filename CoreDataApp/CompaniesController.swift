@@ -72,6 +72,11 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
                 for company in companies {
                     print(company.name ?? "")
                 }
+                
+                // Display companies after fetching
+                self.companies = companies
+                self.tableView.reloadData()
+                
             } catch let fetchError {
                 print("Failed to fetch companies:", fetchError)
             }

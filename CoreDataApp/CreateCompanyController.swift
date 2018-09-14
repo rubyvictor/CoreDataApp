@@ -70,6 +70,10 @@ class CreateCompanyController: UIViewController {
             do {
                 try context.save()
                 print("Successfully saved Company:\(company)")
+                // Success
+                self.dismiss(animated: true, completion: {
+                    self.delegate?.didAddCompany(company: company as! Company)
+                })
             } catch let saveError {
                 print("Failed to save Company: \(saveError)")
             }
