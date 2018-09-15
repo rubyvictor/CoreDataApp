@@ -44,8 +44,6 @@ class CreateCompanyController: UIViewController {
         
         setupNavItems()
         
-        
-//        setupNavigationStyle() // not needed after refactor
     }
     @objc func handleCancel(){
         dismiss(animated: true, completion: nil)
@@ -55,14 +53,16 @@ class CreateCompanyController: UIViewController {
         print("Save company")
         
         // Initialize our Core Data Stack and context
-        let persistentContainer = NSPersistentContainer(name: "Company")
-        persistentContainer.loadPersistentStores { (storeDescription, error) in
-            if let error = error {
-                fatalError("Loading of store failed: \(error)")
-            }
-            
-            let context = persistentContainer.viewContext
-            
+//        let persistentContainer = NSPersistentContainer(name: "Company")
+//        persistentContainer.loadPersistentStores { (storeDescription, error) in
+//            if let error = error {
+//                fatalError("Loading of store failed: \(error)")
+//            }
+        
+//            let context = persistentContainer.viewContext
+        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
             let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
             company.setValue(self.nameTextField.text, forKey: "name")
         
@@ -80,22 +80,6 @@ class CreateCompanyController: UIViewController {
             
             
         }
-        
-        
-        
-        
-        //        dismiss(animated: true, completion: nil) // refactor this to animate after completion block:
-
-//        dismiss(animated: true) {
-//            guard let name = self.nameTextField.text else { return }
-//
-//            let company = Company(name: name, founded: Date())
-////            self.companiesController.addCompany(company: company)
-//            //refactor to delegate
-//            //No need for AddCompany(company: Company) method anymore
-//            self.delegate?.didAddCompany(company: company)
-//        }
-    }
     
     func setupNavItems(){
         navigationItem.title = "Create Company"

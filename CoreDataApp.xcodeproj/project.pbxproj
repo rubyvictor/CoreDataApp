@@ -15,6 +15,7 @@
 		B17C32FC1FA8C24F00F524F3 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32FB1FA8C24F00F524F3 /* Company.swift */; };
 		B17C32FE1FA8CAC700F524F3 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */; };
 		B1D05D97214BB09C0012F846 /* Company.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B1D05D95214BB09C0012F846 /* Company.xcdatamodeld */; };
+		B1D05D99214BC08B0012F846 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D05D98214BC08B0012F846 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B17C32FB1FA8C24F00F524F3 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		B17C32FD1FA8CAC700F524F3 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 		B1D05D96214BB09C0012F846 /* Company.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Company.xcdatamodel; sourceTree = "<group>"; };
+		B1D05D98214BC08B0012F846 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				B17C32F51FA8A32500F524F3 /* Info.plist */,
 				B17C32FB1FA8C24F00F524F3 /* Company.swift */,
 				B1D05D95214BB09C0012F846 /* Company.xcdatamodeld */,
+				B1D05D98214BC08B0012F846 /* CoreDataManager.swift */,
 			);
 			path = CoreDataApp;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D05D99214BC08B0012F846 /* CoreDataManager.swift in Sources */,
 				B1D05D97214BB09C0012F846 /* Company.xcdatamodeld in Sources */,
 				B17C32EC1FA8A32500F524F3 /* CompaniesController.swift in Sources */,
 				B17C32EA1FA8A32500F524F3 /* AppDelegate.swift in Sources */,
