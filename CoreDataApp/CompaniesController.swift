@@ -56,32 +56,33 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     
     private func fetchCompanies(){
         // Initialize CoreData for NSFetchRequest(entityName: String)
-        let persistentContainer = NSPersistentContainer(name: "Company")
-        persistentContainer.loadPersistentStores { (storeDescription, error) in
-            if let error = error {
-                fatalError("Loading of store failed: \(error)")
+        //        let persistentContainer = NSPersistentContainer(name: "Company")
+        //        persistentContainer.loadPersistentStores { (storeDescription, error) in
+        //            if let error = error {
+        //                fatalError("Loading of store failed: \(error)")
+        //            }
+        //            let context = persistentContainer.viewContext
+        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+        
+        do {
+            let companies = try context.fetch(fetchRequest)
+            
+            for company in companies {
+                print(company.name ?? "")
             }
             
-            let context = persistentContainer.viewContext
+            // Display companies after fetching
+            self.companies = companies
+            self.tableView.reloadData()
             
-            let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
-            
-            do {
-                let companies = try context.fetch(fetchRequest)
-                
-                for company in companies {
-                    print(company.name ?? "")
-                }
-                
-                // Display companies after fetching
-                self.companies = companies
-                self.tableView.reloadData()
-                
-            } catch let fetchError {
-                print("Failed to fetch companies:", fetchError)
-            }
+        } catch let fetchError {
+            print("Failed to fetch companies:", fetchError)
         }
     }
+    
     
     
 
