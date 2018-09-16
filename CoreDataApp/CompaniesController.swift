@@ -54,6 +54,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
     
+    
     private func fetchCompanies(){
         // Initialize CoreData for NSFetchRequest(entityName: String)
         //        let persistentContainer = NSPersistentContainer(name: "Company")
@@ -82,9 +83,6 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             print("Failed to fetch companies:", fetchError)
         }
     }
-    
-    
-    
 
     // To pass data from createCompanyController to CompaniesController
     // 3 steps
@@ -116,7 +114,39 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         present(navController, animated: true, completion: nil)
     }
     
-
+    // Delete by swiping
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            guard let company = self.companies[indexPath.row] else { return }
+            
+            // Remove company from tableView
+            self.companies.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            print("Attempting to delete company:",company.name ?? "")
+            
+            
+            // Delete company from CoreData
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            context.delete(company)
+            // Need to persist the deletion
+            do {
+                try context.save()
+            } catch let saveError {
+                print("Failed to delete company:",saveError)
+            }
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            
+            let company = self.companies[indexPath.row]
+            
+            // Edit company in TableView
+            self.tableView.isEditing = true
+            print("Editing company:", company?.name ?? "")
+        }
+        return [deleteAction,editAction]
+    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
