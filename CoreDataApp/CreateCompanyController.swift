@@ -17,7 +17,11 @@ protocol CreateCompanyControllerDelegate {
 
 class CreateCompanyController: UIViewController {
     
-    var company: Company?
+    var company: Company? {
+        didSet {
+            nameTextField.text = company?.name
+        }
+    }
     
 //    var companiesController = CompaniesController() //refactor to delegate
     var delegate: CreateCompanyControllerDelegate?
@@ -63,14 +67,6 @@ class CreateCompanyController: UIViewController {
     @objc func handleSave(){
         print("Save company")
         
-        // Initialize our Core Data Stack and context
-//        let persistentContainer = NSPersistentContainer(name: "Company")
-//        persistentContainer.loadPersistentStores { (storeDescription, error) in
-//            if let error = error {
-//                fatalError("Loading of store failed: \(error)")
-//            }
-        
-//            let context = persistentContainer.viewContext
         
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
