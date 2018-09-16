@@ -145,7 +145,11 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             }
         }
         
+        deleteAction.backgroundColor = UIColor.rgb(r: 247, g: 66, b: 82)
+        
         let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
+        
+        editAction.backgroundColor = UIColor.darkBlue
 
         return [deleteAction,editAction]
     }
