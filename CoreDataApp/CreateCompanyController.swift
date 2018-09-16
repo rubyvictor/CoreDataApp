@@ -13,6 +13,7 @@ import CoreData
 // Benefit: This class is Not tightly coupled with CompaniesController class.
 protocol CreateCompanyControllerDelegate {
     func didAddCompany(company: Company)
+    func didEditCompany(company: Company)
 }
 
 class CreateCompanyController: UIViewController {
@@ -65,28 +66,51 @@ class CreateCompanyController: UIViewController {
         print("Cancelled create company")
     }
     @objc func handleSave(){
+        if company == nil {
+            createCompany()
+        } else {
+            saveCompanyChanges()
+        }
+        }
+
+    private func saveCompanyChanges(){
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        company?.name = nameTextField.text
+        
+        do {
+            try context.save()
+            // save succeeded & call delegate
+            dismiss(animated: true) {
+                self.delegate?.didEditCompany(company: self.company!)
+            }
+            dismiss(animated: true, completion: nil)
+        } catch let saveCompanyErr {
+            print("Failed to save Company changes",saveCompanyErr)
+        }
+    }
+    
+    private func createCompany(){
         print("Save company")
         
         
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
-            let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
-            company.setValue(self.nameTextField.text, forKey: "name")
+        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        company.setValue(self.nameTextField.text, forKey: "name")
         
-            // Perform the save
-            do {
-                try context.save()
-                print("Successfully saved Company:\(company)")
-                // Success
-                self.dismiss(animated: true, completion: {
-                    self.delegate?.didAddCompany(company: company as! Company)
-                })
-            } catch let saveError {
-                print("Failed to save Company: \(saveError)")
-            }
-            
-            
+        // Perform the save
+        do {
+            try context.save()
+            print("Successfully saved Company:\(company)")
+            // Success - implement the delegate to pass data to CompaniesController
+            self.dismiss(animated: true, completion: {
+                self.delegate?.didAddCompany(company: company as! Company)
+            })
+        } catch let saveError {
+            print("Failed to save Company: \(saveError)")
         }
+    }
     
     func setupNavItems(){
 //        navigationItem.title = "Create Company"

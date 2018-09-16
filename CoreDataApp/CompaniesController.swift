@@ -11,6 +11,8 @@ import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
     
+     var companies = [Company?]()
+    
     func didAddCompany(company: Company) {
         // Code from original addCompany(company: Company) method goes here after refactor
         companies.append(company)
@@ -20,7 +22,13 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
 
-    var companies = [Company?]()
+    func didEditCompany(company: Company) {
+        // update my tableview
+        guard let row = companies.index(of: company) else { return }
+        let reloadIndexPath = IndexPath(row: row, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .automatic)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +156,8 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         // Create modal for edit company
         let editCompanyController = CreateCompanyController()
         editCompanyController.company = companies[indexPath.row]
+        // set delegate to self to conform to implement didEditCompany delegate method
+        editCompanyController.delegate = self
         let navController = CustomNavigationController(rootViewController: editCompanyController)
         present(navController, animated: true, completion: nil)
         
