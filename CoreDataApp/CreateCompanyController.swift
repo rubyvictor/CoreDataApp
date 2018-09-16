@@ -17,6 +17,8 @@ protocol CreateCompanyControllerDelegate {
 
 class CreateCompanyController: UIViewController {
     
+    var company: Company?
+    
 //    var companiesController = CompaniesController() //refactor to delegate
     var delegate: CreateCompanyControllerDelegate?
     
@@ -34,6 +36,15 @@ class CreateCompanyController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // ternary to check if edit or create company
+        navigationItem.title = company == nil ? "Create Company" : "Edit Company"
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +93,7 @@ class CreateCompanyController: UIViewController {
         }
     
     func setupNavItems(){
-        navigationItem.title = "Create Company"
+//        navigationItem.title = "Create Company"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))

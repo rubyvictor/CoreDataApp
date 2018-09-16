@@ -137,15 +137,20 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             }
         }
         
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            
-            let company = self.companies[indexPath.row]
-            
-            // Edit company in TableView
-            self.tableView.isEditing = true
-            print("Editing company:", company?.name ?? "")
-        }
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
+
         return [deleteAction,editAction]
+    }
+    
+    private func editHandlerFunction (action: UITableViewRowAction, indexPath: IndexPath) {
+        print("Editing company in separate function")
+        
+        // Create modal for edit company
+        let editCompanyController = CreateCompanyController()
+        editCompanyController.company = companies[indexPath.row]
+        let navController = CustomNavigationController(rootViewController: editCompanyController)
+        present(navController, animated: true, completion: nil)
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
