@@ -53,7 +53,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         navigationItem.title = "Companies"
         
         view.backgroundColor = .white
-        tableView.backgroundColor = UIColor.rgb(r: 9, g: 45, b: 64)
+        tableView.backgroundColor = UIColor.darkBlue
 //        tableView.separatorStyle = .none
         tableView.separatorColor = .white
         tableView.tableFooterView = UIView() //blank view to get rid of lines below
@@ -145,7 +145,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
             }
         }
         
-        deleteAction.backgroundColor = UIColor.rgb(r: 247, g: 66, b: 82)
+        deleteAction.backgroundColor = UIColor.lightRed
         
         let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
         
@@ -185,7 +185,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
 
         // set cell colors to tealColor
-        cell.backgroundColor = UIColor.rgb(r: 48, g: 164, b: 182)
+        cell.backgroundColor = UIColor.tealColor
         //        cell.backgroundColor = .tealColor
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -200,15 +200,5 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     
 }
 
-extension UIColor {
-    static func rgb(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
-        return UIColor(red: r/255, green: g/255, blue: b/255, alpha: 1)
-    }
-    // Or hard code the actual color themes like this
-    static let tealColor = UIColor(red: 48/255, green: 164/255, blue: 182/255, alpha: 1)
-    
-    static let lightBlue = UIColor(red: 218/255, green: 235/255, blue: 243/255, alpha: 1)
-    
-    static let darkBlue = UIColor(red: 9/255, green: 45/255, blue: 64/255, alpha: 1)
-}
+
 

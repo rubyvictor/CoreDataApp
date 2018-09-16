@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B17B9B92214E8D18009E20EC /* UIColor-theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B9B91214E8D18009E20EC /* UIColor-theme.swift */; };
 		B17C32EA1FA8A32500F524F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32E91FA8A32500F524F3 /* AppDelegate.swift */; };
 		B17C32EC1FA8A32500F524F3 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */; };
 		B17C32EF1FA8A32500F524F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17C32ED1FA8A32500F524F3 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B17B9B91214E8D18009E20EC /* UIColor-theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-theme.swift"; sourceTree = "<group>"; };
 		B17C32E61FA8A32500F524F3 /* CoreDataApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17C32E91FA8A32500F524F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17C32EB1FA8A32500F524F3 /* CompaniesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				B17C32FB1FA8C24F00F524F3 /* Company.swift */,
 				B1D05D95214BB09C0012F846 /* Company.xcdatamodeld */,
 				B1D05D98214BC08B0012F846 /* CoreDataManager.swift */,
+				B17B9B91214E8D18009E20EC /* UIColor-theme.swift */,
 			);
 			path = CoreDataApp;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				B17C32EC1FA8A32500F524F3 /* CompaniesController.swift in Sources */,
 				B17C32EA1FA8A32500F524F3 /* AppDelegate.swift in Sources */,
 				B17C32FC1FA8C24F00F524F3 /* Company.swift in Sources */,
+				B17B9B92214E8D18009E20EC /* UIColor-theme.swift in Sources */,
 				B17C32FE1FA8CAC700F524F3 /* CreateCompanyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

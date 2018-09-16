@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white // For white bar cancel text
         UINavigationBar.appearance().isTranslucent = false
         
-        let lightRed = UIColor.rgb(r: 247, g: 66, b: 82)
-        UINavigationBar.appearance().barTintColor = lightRed
+//        let lightRed = UIColor.rgb(r: 247, g: 66, b: 82)
+        UINavigationBar.appearance().barTintColor = UIColor.lightRed
         
         UINavigationBar.appearance().prefersLargeTitles = true
         //titleTextAttributes for small title at top of navbar
